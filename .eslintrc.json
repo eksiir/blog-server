@@ -1,0 +1,65 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "plugins": ["json"],
+  "extends": ["eslint:recommended"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {"ecmaVersion": 2018},
+  "rules": {
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1, "maxBOF": 0 }],
+    "no-irregular-whitespace": "error",
+    "no-useless-escape": "off",
+    "@typescript-eslint /**":"off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-undef": "warn",
+    "no-redeclare": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-extra-boolean-cast": "off",
+    "no-case-declarations": "off",
+    "no-trailing-spaces": "error",
+    "no-prototype-builtins":"off",
+    "no-useless-catch":"off",
+    "arrow-parens": "off",
+    "semi": ["error", "always"],
+    "no-bitwise": "off",
+    "camelcase": "off",
+    "curly": "error"
+  },
+  "overrides": [
+    {
+      "files": ["benchmark/JSON.js", "scripts/**/*.js"],
+      "rules": {"no-console": "off"}
+    },
+    {
+      "files": [
+        "**/*.ts",
+        "**/*.tsx"
+      ],
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "tsconfigRootDir": "./",
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/no-var-requires":"off",
+        "@typescript-eslint/no-explicit-any":"off"
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ]
+    }
+  ]
+}
