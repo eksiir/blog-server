@@ -1,4 +1,4 @@
-This is a modern blog server using the advanced Next.js features.
+This is a modern blog server using React.js, TypeScript and the advanced Next.js features.
 
 # Setup
 To setup the build, run, test or any other operations you must first do
