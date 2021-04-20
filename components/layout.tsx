@@ -7,7 +7,13 @@ import Link from 'next/link';
 const name = 'Behnam Behzadi';
 export const siteTitle = 'Blog Server';
 
-export default function Layout({ children, home }) {
+export default function Layout({
+  children,
+  home
+}: {
+  children: React.ReactNode,
+  home?: boolean
+}): JSX.Element {
   return (
     <div className={styles.container}>
       <Head>
@@ -69,5 +75,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  )
+  );
 }
