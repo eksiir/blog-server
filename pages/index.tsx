@@ -6,6 +6,8 @@ import Date from '../components/date';
 import { getSortedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
 
+const getPath = (id: string, url?: string): string => url ? url : `/posts/${id}`;
+
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData();
   return {
@@ -19,9 +21,10 @@ export default function Home({
   allPostsData
 }: {
   allPostsData: {
-    date: string,
+    id: string,
     title: string,
-    id: string
+    date: string,
+    url?: string
   }[]
 }): JSX.Element {
   return (
@@ -30,18 +33,19 @@ export default function Home({
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hello, I'm <strong>Behnam</strong>. Here are a set of blogs on how to use Next.js efficiently.</p>
+        <p>Here are a set of blogs I would like to share with you.</p>
         <p>
-          If you are interested to learn more , check out the{' '}
-          <a href="https://nextjs.org/learn">Next.js tutorial</a>.
+          If you want to stay up-to-date, check out the{' '}
+          <a href="https://app.getbambu.com/feed">Latest</a>{' '}
+          in the series.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <h2 className={utilStyles.headingLg}>Blogs</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {allPostsData.map(({ id, date, title, url }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
+              <Link href={getPath(id, url)}>
                 <a>{title}</a>
               </Link>
               <br />

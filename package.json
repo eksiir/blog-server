@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "lint": "eslint .",
-    "dev": "npm run lint && next dev",
-    "build": "npm run lint && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "npm run lint && next start"
   },
   "dependencies": {
