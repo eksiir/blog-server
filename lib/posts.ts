@@ -14,6 +14,7 @@ interface PostData {
   id: string;
   date: string;
   title: string;
+  url?: string
   contentHtml?: string
 }
 
@@ -36,7 +37,7 @@ export function getSortedPostsData(): PostData[] {
     // Combine the data with the id
     return {
       id,
-      ...(matterResult.data as { date: string; title: string })
+      ...(matterResult.data as { date: string; title: string; url: string })
     };
   });
 
@@ -78,6 +79,6 @@ export async function getPostData(id: string): Promise<PostData> {
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string })
+    ...(matterResult.data as { date: string; title: string; url: string })
   };
 }
